@@ -35,7 +35,20 @@ public class Time {
         }
         if (d>days[m-1])
         {
-            g=false;
+            if(m==2 &&(y%4==0 || y % 400 == 0))
+            {
+             if(d>29)
+             {
+                 g=false;
+             }
+             else
+             {
+                 g=true;
+             }
+            }
+            else {
+                g = false;
+            }
         }
         if(y%100==0) {
             if (y % 400 == 0)
@@ -59,18 +72,9 @@ public class Time {
     }
     public String getdate(int day, int month, int year,boolean good, boolean leap) {
         if(good) {
-            if (month > 2 && year % 4 == 0 &&
-                    (year % 100 != 0 || year % 400 == 0))
+            if ((month > 2 && (year % 4 == 0)))
             {
-                ++day;
-            }
-            if(year % 4 == 0 && (year % 100 != 0 || year % 400 == 0))
-            {
-                leap=true;
-            }
-            else
-            {
-                leap=false;
+                day++;
             }
 
             // Add the days in the previous months
@@ -80,39 +84,18 @@ public class Time {
             }
         //    return ""+day;
             int cday=day;
-            int cmonth=0;
-            if(leap)
+            int cmonth=(cday/28)+1;
+            if(cday%28 ==0)
             {
-                if (!(cday==30 && cmonth==12)) {
-                    while (cday > 28) {
-                        if (cmonth == 0) {
-                            cday = cday - (bdays[cmonth] + 1);
-                            cmonth++;
-                        }
-                        else
-                        {
-                            cday = cday - (bdays[cmonth]);
-                            cmonth++;
-                        }
-                    }
-                }
+                cmonth--;
             }
-            else
+            cday = cday-(((cmonth-1)*28));
+            if(cmonth==14)
             {
-                while (cday>28)
-                {
-                    cday = cday - (bdays[cmonth]);
-                    cmonth++;
-                }
+                cmonth--;
+                cday+=(28);
             }
-            if(cday<1)
-            {cday=bdays[cmonth]-(cday*-1);}
-            cmonth++;
             return (cmonth+"/"+cday+"/"+year);
-
-
-
-
 
 
         }
