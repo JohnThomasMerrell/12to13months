@@ -58,7 +58,7 @@ public class DateTimeApp {
                     // Call the method from the Time class
                     String newDate = outime.toString();
                     // Display the result in the output area
-                    outputArea.setText("Gregorian Calendar: " + dateInput + "\nMonth Calendar: "+ newDate);
+                    outputArea.setText("Gregorian Calendar: " + dateInput + "\n13 Month Calendar: "+ newDate);
                 } catch (NumberFormatException ex) {
                     // Handle invalid number format
                     outputArea.setText("Invalid number format for days.");
