@@ -25,7 +25,7 @@ public class DateTimeApp {
         panel.setLayout(null);
 
         // Create JLabel for date
-        JLabel dateLabel = new JLabel("Enter Date (MM/dd/yyyy):");
+        JLabel dateLabel = new JLabel("Enter Date (MM/DD/YYYY):");
         dateLabel.setBounds(10, 20, 180, 25);
         panel.add(dateLabel);
 
